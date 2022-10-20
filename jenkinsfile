@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+    stages {
+        stage ('compile') {
+            steps {
+                 // Get some code from a GitHub repository
+                git 'https://github.com/devaas4/devops-practice.git'
+
+                // Run Maven on a Unix agent.
+                 sh 'mvn compile'
+            }
+        }
+        stage ('test') {
+            steps {
+                 sh 'mvn test'
+            }
+        }
+        stage ('package') {
+            steps {
+                 sh 'mvn clean package'
+            }
+        }
+        stage ('deploy') {
+            agent 'Tomcat-server'
+            steps {
+                // Get some code from a GitHub repository
+                git 'https://github.com/devaas4/devops-practice.git'
+
+                // Run Maven on a Unix agent.
+                 sh 'mvn compile'
+                 sh 'deploy'
+                
+            }
+        }
+    }
+}
