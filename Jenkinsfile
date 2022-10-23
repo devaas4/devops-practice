@@ -13,7 +13,7 @@ pipeline {
         stage ('deploy') {
 
             steps {
-             tomcatDeploy('172.156.2.3','app','Tomcat_server')
+             tomcatDeploy('54.146.160.160','app','Tomcat_server')
 
             }
         }
