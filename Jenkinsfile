@@ -6,7 +6,7 @@ pipeline {
             steps {
 
                 // Run Maven on a Unix agent.
-                 sh 'mvn compile'
+                 sh 'mvn package'
             }
         }
 
